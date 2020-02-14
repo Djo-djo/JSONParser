@@ -39,6 +39,18 @@ namespace FizzBuzz
             jsonValues.AddRange(nodes.Values);
         }
 
+        public static void Parse(object obj)
+        {
+            string jsonText = JsonConvert.SerializeObject(obj);
+            JObject jObject = JObject.Parse(jsonText);
+            Dictionary<string, object> nodes = new Dictionary<string, object>();
+
+            FillDictionaty(jObject, nodes);
+
+            jsonKeys.AddRange(nodes.Keys);
+            jsonValues.AddRange(nodes.Values);
+        }
+
         private static void FillDictionaty(JToken jToken, Dictionary<string, object> nodes, string parentNode = "")
         {
             if (jToken.HasValues)

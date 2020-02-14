@@ -6,6 +6,8 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
+            Pupil pupil = new Pupil() { Name = "fsdfs", PupilClass = new PupilClass() { ClassName = "fdssdf", PupilsCount = 32 } };
+
             string jsonText = "{" +
                 "\"Number\": 7," +
                 "\"Md\": 120," +
@@ -24,10 +26,21 @@ namespace FizzBuzz
                     "}" +
                 "}";
 
-            Flatter.Parse(jsonText);
+            Flatter.Parse(pupil);
             Console.WriteLine(Flatter.JsonKeys);
             Console.WriteLine();
             Console.WriteLine(Flatter.JsonValues);
         }
+    }
+
+    class Pupil
+    {
+        public string Name { get; set; }
+        public PupilClass PupilClass { get; set; }
+    }
+    class PupilClass
+    {
+        public string ClassName { get; set; }
+        public int PupilsCount { get; set; }
     }
 }
